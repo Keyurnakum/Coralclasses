@@ -34,7 +34,7 @@ export default function Chatbot() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-6 z-50 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-transform hover:scale-110"
+        className="fixed right-4 bottom-40 z-50 rounded-full bg-cyan-600 p-4 text-white shadow-lg shadow-cyan-200 transition-transform hover:scale-110 hover:bg-cyan-700 md:right-6 md:bottom-24"
       >
         <MessageSquare className="h-6 w-6" />
       </button>
@@ -45,15 +45,15 @@ export default function Chatbot() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-[60] w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col h-[500px]"
+            className="fixed right-3 bottom-40 z-[60] flex h-[500px] w-[calc(100vw-1.5rem)] max-w-sm flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-2xl md:right-6 md:bottom-24 md:w-80 md:max-w-none lg:w-96"
           >
             {/* Header */}
-            <div className="bg-blue-600 p-4 text-white flex justify-between items-center">
+            <div className="flex items-center justify-between bg-cyan-600 p-4 text-white">
               <div className="flex items-center space-x-2">
                 <div className="bg-white/20 p-2 rounded-lg">
                   <Bot className="h-5 w-5" />
                 </div>
-                <span className="font-bold">EduStream Assistant</span>
+                <span className="font-bold">CoralClasses Assistant</span>
               </div>
               <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1 rounded-lg transition-colors">
                 <X className="h-5 w-5" />
@@ -68,7 +68,7 @@ export default function Chatbot() {
                     "max-w-[80%] p-3 rounded-2xl text-sm",
                     msg.isBot 
                       ? "bg-white text-gray-800 rounded-tl-none shadow-sm" 
-                      : "bg-blue-600 text-white rounded-tr-none shadow-md"
+                      : "bg-cyan-600 text-white rounded-tr-none shadow-md"
                   )}>
                     {msg.text}
                   </div>
@@ -81,13 +81,13 @@ export default function Chatbot() {
               <input
                 type="text"
                 placeholder="Ask a question..."
-                className="flex-grow px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                className="flex-grow rounded-xl border border-gray-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
               <button
                 type="submit"
-                className="bg-blue-600 text-white p-2 rounded-xl hover:bg-blue-700 transition-colors"
+                className="rounded-xl bg-cyan-600 p-2 text-white transition-colors hover:bg-cyan-700"
               >
                 <Send className="h-4 w-4" />
               </button>

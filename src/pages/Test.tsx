@@ -98,9 +98,9 @@ export default function TestPage({ userProfile }: { userProfile: UserProfile | n
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Test Completed!</h2>
           <p className="text-gray-500 mb-8">Great job on finishing the quiz.</p>
           
-          <div className="bg-blue-50 p-6 rounded-2xl mb-8">
-            <div className="text-sm text-blue-600 font-bold uppercase tracking-wider mb-1">Your Score</div>
-            <div className="text-5xl font-black text-blue-900">{score} / {test.questions.length}</div>
+          <div className="mb-8 rounded-2xl bg-cyan-50 p-6">
+            <div className="mb-1 text-sm font-bold uppercase tracking-wider text-cyan-600">Your Score</div>
+            <div className="text-5xl font-black text-cyan-900">{score} / {test.questions.length}</div>
           </div>
           
           <button
@@ -125,7 +125,7 @@ export default function TestPage({ userProfile }: { userProfile: UserProfile | n
             <p className="text-sm text-gray-500">Question {currentQuestion + 1} of {test.questions.length}</p>
           </div>
           <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
-            <Timer className="h-4 w-4 text-blue-600" />
+            <Timer className="h-4 w-4 text-cyan-600" />
             <span className="font-mono font-bold text-gray-700">14:59</span>
           </div>
         </div>
@@ -140,14 +140,14 @@ export default function TestPage({ userProfile }: { userProfile: UserProfile | n
                 className={cn(
                   "w-full text-left px-6 py-4 rounded-2xl border-2 transition-all",
                   answers[currentQuestion] === i 
-                    ? "border-blue-600 bg-blue-50 text-blue-900" 
+                    ? "border-cyan-600 bg-cyan-50 text-cyan-900" 
                     : "border-gray-100 hover:border-gray-200 text-gray-700"
                 )}
               >
                 <div className="flex items-center">
                   <div className={cn(
                     "w-6 h-6 rounded-full border-2 mr-4 flex items-center justify-center text-xs font-bold",
-                    answers[currentQuestion] === i ? "border-blue-600 bg-blue-600 text-white" : "border-gray-300 text-gray-400"
+                    answers[currentQuestion] === i ? "border-cyan-600 bg-cyan-600 text-white" : "border-gray-300 text-gray-400"
                   )}>
                     {String.fromCharCode(65 + i)}
                   </div>
@@ -177,7 +177,7 @@ export default function TestPage({ userProfile }: { userProfile: UserProfile | n
           ) : (
             <button
               onClick={() => setCurrentQuestion(prev => prev + 1)}
-              className="px-8 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 shadow-lg shadow-blue-100 flex items-center"
+              className="flex items-center rounded-xl bg-cyan-600 px-8 py-3 font-bold text-white shadow-lg shadow-cyan-100 hover:bg-cyan-700"
             >
               Next Question
               <ArrowRight className="ml-2 h-4 w-4" />

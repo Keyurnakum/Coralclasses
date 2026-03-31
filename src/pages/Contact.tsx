@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
-import { db } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,11 +16,21 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+
     try {
-      await addDoc(collection(db, 'inquiries'), {
-        ...formData,
-        createdAt: new Date().toISOString()
+      const response = await fetch(`${API_BASE_URL}/api/inquiries`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(payload.error || 'Failed to save inquiry.');
+      }
+
       setStatus('success');
       setFormData({ name: '', phone: '', course: '', message: '' });
     } catch (error) {
@@ -43,7 +53,7 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="flex items-start space-x-4">
-              <div className="bg-blue-100 p-3 rounded-xl text-blue-600">
+              <div className="rounded-xl bg-cyan-100 p-3 text-cyan-600">
                 <MapPin className="h-6 w-6" />
               </div>
               <div>
@@ -69,8 +79,8 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">Email Us</h3>
-                <p className="text-gray-600">info@edustream.com</p>
-                <p className="text-gray-600">support@edustream.com</p>
+                <p className="text-gray-600">info@coralclasses.com</p>
+                <p className="text-gray-600">support@coralclasses.com</p>
               </div>
             </div>
 
@@ -98,7 +108,7 @@ export default function Contact() {
                   <input
                     type="text"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -109,7 +119,7 @@ export default function Contact() {
                   <input
                     type="tel"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -120,7 +130,7 @@ export default function Contact() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Interested Course</label>
                 <select
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                   value={formData.course}
                   onChange={(e) => setFormData({ ...formData, course: e.target.value })}
                 >
@@ -135,7 +145,7 @@ export default function Contact() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                 <textarea
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                   placeholder="Tell us about your requirements..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -144,7 +154,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all disabled:opacity-50"
+                className="inline-flex w-full items-center justify-center rounded-xl bg-cyan-600 px-8 py-4 font-bold text-white transition-all hover:bg-cyan-700 disabled:opacity-50"
               >
                 {status === 'loading' ? 'Sending...' : 'Send Inquiry'}
                 <Send className="ml-2 h-5 w-5" />

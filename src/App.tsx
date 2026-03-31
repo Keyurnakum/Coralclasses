@@ -10,12 +10,13 @@ import {
 import { 
   Menu, 
   X, 
-  GraduationCap, 
   User, 
   LogOut, 
   LayoutDashboard,
   MessageSquare,
-  Phone
+  Phone,
+  GraduationCap,
+  House
 } from 'lucide-react';
 import { auth, db, googleProvider } from './firebase';
 import { onAuthStateChanged, signInWithPopup, signOut, User as FirebaseUser } from 'firebase/auth';
@@ -55,13 +56,16 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+    <nav className="sticky top-0 z-50 border-b border-cyan-100 bg-white/90 shadow-sm backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 justify-between">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <GraduationCap className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900 tracking-tight">EduStream</span>
+            <Link to="/" className="flex items-center">
+              <img
+                src="/logo.jpeg"
+                alt="CoralClasses logo"
+                className="h-11 w-auto max-w-[160px] rounded-2xl bg-white px-2 py-1 object-contain shadow-sm"
+              />
             </Link>
           </div>
 
@@ -72,8 +76,8 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
                 key={link.name}
                 to={link.path}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-blue-600",
-                  location.pathname === link.path ? "text-blue-600" : "text-gray-600"
+                  "text-sm font-medium transition-colors hover:text-cyan-600",
+                  location.pathname === link.path ? "text-cyan-700" : "text-gray-600"
                 )}
               >
                 {link.name}
@@ -83,7 +87,7 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
               <div className="flex items-center space-x-4">
                 <Link
                   to={userProfile.role === 'admin' ? '/admin' : '/dashboard'}
-                  className="flex items-center space-x-1 text-sm font-medium text-gray-600 hover:text-blue-600"
+                  className="flex items-center space-x-1 text-sm font-medium text-gray-600 hover:text-cyan-600"
                 >
                   <LayoutDashboard className="h-4 w-4" />
                   <span>Dashboard</span>
@@ -98,7 +102,7 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
             ) : (
               <Link
                 to="/login"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-all"
+                className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm shadow-cyan-100 transition-all hover:bg-cyan-700"
               >
                 Login
               </Link>
@@ -109,7 +113,7 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-gray-900 focus:outline-none"
+              className="text-gray-600 hover:text-cyan-700 focus:outline-none"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -124,15 +128,15 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+            className="overflow-hidden border-t border-cyan-100 bg-white md:hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
                 >
                   {link.name}
                 </Link>
@@ -142,7 +146,7 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
                   <Link
                     to={userProfile.role === 'admin' ? '/admin' : '/dashboard'}
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                    className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
                   >
                     Dashboard
                   </Link>
@@ -151,7 +155,7 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
                       handleLogout();
                       setIsOpen(false);
                     }}
-                    className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50"
+                    className="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-red-600"
                   >
                     Logout
                   </button>
@@ -160,7 +164,7 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
                 <Link
                   to="/login"
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+                  className="block rounded-md bg-cyan-600 px-3 py-2 text-base font-medium text-white hover:bg-cyan-700"
                 >
                   Login
                 </Link>
@@ -174,57 +178,104 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
 };
 
 const Footer = () => (
-  <footer className="bg-gray-900 text-white py-12">
+  <footer className="border-t border-cyan-900/30 bg-slate-950 pt-12 pb-28 text-white md:pb-12">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="col-span-1 md:col-span-2">
-          <div className="flex items-center space-x-2 mb-4">
-            <GraduationCap className="h-8 w-8 text-blue-400" />
-            <span className="text-2xl font-bold tracking-tight">EduStream Academy</span>
+          <div className="mb-4">
+            <img
+              src="/logo.jpeg"
+              alt="CoralClasses logo"
+              className="h-16 w-auto rounded-2xl bg-white px-3 py-2 object-contain shadow-sm"
+            />
           </div>
-          <p className="text-gray-400 max-w-md">
-            Empowering students with quality education and modern learning tools. 
+          <p className="max-w-md text-gray-400">
+            Empowering students with quality education and modern learning tools.
             Join us to shape your future with expert guidance and comprehensive study materials.
           </p>
         </div>
         <div>
-          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+          <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
           <ul className="space-y-2">
-            <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
-            <li><Link to="/courses" className="text-gray-400 hover:text-white transition-colors">Courses</Link></li>
-            <li><Link to="/faculty" className="text-gray-400 hover:text-white transition-colors">Faculty</Link></li>
-            <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+            <li><Link to="/about" className="text-gray-400 transition-colors hover:text-cyan-300">About Us</Link></li>
+            <li><Link to="/courses" className="text-gray-400 transition-colors hover:text-cyan-300">Courses</Link></li>
+            <li><Link to="/faculty" className="text-gray-400 transition-colors hover:text-cyan-300">Faculty</Link></li>
+            <li><Link to="/contact" className="text-gray-400 transition-colors hover:text-cyan-300">Contact</Link></li>
           </ul>
         </div>
         <div>
-          <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+          <h3 className="mb-4 text-lg font-semibold">Contact Info</h3>
           <ul className="space-y-2 text-gray-400">
             <li className="flex items-center space-x-2">
-              <Phone className="h-4 w-4" />
+              <Phone className="h-4 w-4 text-cyan-300" />
               <span>+91 98765 43210</span>
             </li>
             <li className="flex items-center space-x-2">
-              <MessageSquare className="h-4 w-4" />
-              <span>info@edustream.com</span>
+              <MessageSquare className="h-4 w-4 text-cyan-300" />
+              <span>info@coralclasses.com</span>
             </li>
           </ul>
         </div>
       </div>
-      <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-        &copy; {new Date().getFullYear()} EduStream Academy. All rights reserved.
+      <div className="mt-12 border-t border-slate-800 pt-8 text-center text-sm text-gray-400">
+        &copy; {new Date().getFullYear()} CoralClasses. All rights reserved.
       </div>
     </div>
   </footer>
 );
+
+const MobileBottomNav = ({ userProfile }: { userProfile: UserProfile | null }) => {
+  const location = useLocation();
+
+  const mobileLinks = [
+    { name: 'Home', path: '/', icon: House },
+    { name: 'Courses', path: '/courses', icon: GraduationCap },
+    { name: 'Contact', path: '/contact', icon: Phone },
+    {
+      name: userProfile ? 'Dashboard' : 'Login',
+      path: userProfile ? (userProfile.role === 'admin' ? '/admin' : '/dashboard') : '/login',
+      icon: LayoutDashboard,
+    },
+  ];
+
+  return (
+    <div className="mobile-bottom-nav md:hidden">
+      <div className="mx-auto grid max-w-md grid-cols-4 gap-1 px-3 py-2">
+        {mobileLinks.map((link) => {
+          const Icon = link.icon;
+          const isActive = link.path === '/'
+            ? location.pathname === '/'
+            : location.pathname.startsWith(link.path);
+
+          return (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={cn(
+                'flex flex-col items-center justify-center rounded-2xl px-2 py-2 text-[11px] font-semibold transition-all',
+                isActive
+                  ? 'bg-cyan-600 text-white shadow-md shadow-cyan-200'
+                  : 'text-slate-600 hover:bg-cyan-50 hover:text-cyan-700'
+              )}
+            >
+              <Icon className="mb-1 h-4 w-4" />
+              <span>{link.name}</span>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 const WhatsAppButton = () => (
   <a
     href="https://wa.me/919876543210"
     target="_blank"
     rel="noopener noreferrer"
-    className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform hover:scale-110"
+    className="fixed right-4 bottom-24 z-40 rounded-full bg-green-500 p-3.5 text-white shadow-lg transition-transform hover:scale-110 hover:bg-green-600 md:right-6 md:bottom-6"
   >
-    <Phone className="h-6 w-6" />
+    <Phone className="h-5 w-5 md:h-6 md:w-6" />
   </a>
 );
 
@@ -265,16 +316,16 @@ export default function App() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-cyan-600"></div>
       </div>
     );
   }
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-white font-sans selection:bg-blue-100 selection:text-blue-900">
+      <div className="min-h-screen flex flex-col bg-transparent font-sans selection:bg-cyan-100 selection:text-cyan-900">
         <Navbar userProfile={userProfile} />
-        <main className="flex-grow">
+        <main className="mobile-content-safe flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -289,6 +340,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
+        <MobileBottomNav userProfile={userProfile} />
         <WhatsAppButton />
         <Chatbot />
       </div>
@@ -310,8 +362,8 @@ const Login = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center">
-        <GraduationCap className="h-16 w-16 text-blue-600 mx-auto" />
+      <div className="max-w-md w-full space-y-8 rounded-2xl border border-cyan-100 bg-white p-8 text-center shadow-xl shadow-cyan-100/40">
+        <GraduationCap className="mx-auto h-16 w-16 text-cyan-600" />
         <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
         <p className="text-gray-500">Sign in to access your dashboard and courses</p>
         <button

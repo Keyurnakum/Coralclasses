@@ -14,7 +14,7 @@ export default function About() {
           >
             <h1 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h1>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Founded in 2010, EduStream Academy started with a simple mission: to provide high-quality, 
+              Founded in 2010, CoralClasses started with a simple mission: to provide high-quality, 
               accessible education to every student. Over the last decade, we have grown from a small 
               coaching center to a leading educational institute with a presence across the country.
             </p>
@@ -30,9 +30,9 @@ export default function About() {
               className="rounded-3xl shadow-2xl"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute -bottom-6 -left-6 bg-blue-600 text-white p-8 rounded-2xl shadow-xl hidden md:block">
-              <div className="text-4xl font-bold mb-1">15+</div>
-              <div className="text-sm uppercase tracking-wider font-medium">Years of Excellence</div>
+            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-cyan-600 p-8 text-white shadow-xl md:block">
+              <div className="mb-1 text-4xl font-bold">15+</div>
+              <div className="text-sm font-medium uppercase tracking-wider">Years of Excellence</div>
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function About() {
         {/* Mission & Vision */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           <div className="bg-gray-50 p-10 rounded-3xl border border-gray-100">
-            <div className="bg-blue-100 p-4 rounded-2xl text-blue-600 w-fit mb-6">
+            <div className="mb-6 w-fit rounded-2xl bg-cyan-100 p-4 text-cyan-600">
               <Target className="h-8 w-8" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
@@ -72,7 +72,7 @@ export default function About() {
               { title: 'Innovation', icon: Target, desc: 'We embrace new ideas and technologies.' }
             ].map((value, i) => (
               <div key={i} className="p-6">
-                <div className="bg-blue-50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-blue-600">
+                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-cyan-50 p-4 text-cyan-600">
                   <value.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>

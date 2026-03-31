@@ -65,13 +65,13 @@ export default function Faculty() {
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 space-x-4">
-                  <button className="p-2 bg-white/20 backdrop-blur rounded-full text-white hover:bg-white hover:text-blue-600 transition-colors">
+                  <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur transition-colors hover:bg-white hover:text-cyan-600">
                     <Linkedin className="h-5 w-5" />
                   </button>
-                  <button className="p-2 bg-white/20 backdrop-blur rounded-full text-white hover:bg-white hover:text-blue-600 transition-colors">
+                  <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur transition-colors hover:bg-white hover:text-cyan-600">
                     <Twitter className="h-5 w-5" />
                   </button>
-                  <button className="p-2 bg-white/20 backdrop-blur rounded-full text-white hover:bg-white hover:text-blue-600 transition-colors">
+                  <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur transition-colors hover:bg-white hover:text-cyan-600">
                     <Mail className="h-5 w-5" />
                   </button>
                 </div>
@@ -79,7 +79,7 @@ export default function Faculty() {
               
               <div className="p-6 text-center">
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <div className="text-blue-600 font-medium text-sm mb-3">{member.role}</div>
+                <div className="mb-3 text-sm font-medium text-cyan-600">{member.role}</div>
                 <div className="text-xs text-gray-500 mb-4 uppercase tracking-widest font-bold">{member.exp} Experience</div>
                 <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">{member.bio}</p>
               </div>

@@ -59,7 +59,7 @@ export default function Admin({ userProfile }: { userProfile: UserProfile | null
           <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
           <div className="flex space-x-2">
             <div className="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm flex items-center">
-              <Users className="h-4 w-4 mr-2 text-blue-600" />
+              <Users className="mr-2 h-4 w-4 text-cyan-600" />
               <span className="text-sm font-bold">{students.length} Students</span>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function Admin({ userProfile }: { userProfile: UserProfile | null
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`w-full flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                   activeTab === tab.id 
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-100' 
+                    ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-100' 
                     : 'bg-white text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -93,7 +93,7 @@ export default function Admin({ userProfile }: { userProfile: UserProfile | null
           <div className="flex-grow bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
             <div className="p-6 border-b border-gray-50 flex justify-between items-center">
               <h2 className="text-xl font-bold text-gray-900 capitalize">{activeTab}</h2>
-              <button className="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-600 rounded-lg text-sm font-bold hover:bg-blue-100">
+              <button className="inline-flex items-center rounded-lg bg-cyan-50 px-4 py-2 text-sm font-bold text-cyan-600 hover:bg-cyan-100">
                 <Plus className="h-4 w-4 mr-2" />
                 Add New
               </button>
@@ -118,14 +118,14 @@ export default function Admin({ userProfile }: { userProfile: UserProfile | null
                         <td className="px-6 py-4 text-gray-600">{student.email}</td>
                         <td className="px-6 py-4">
                           <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase ${
-                            student.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
+                            student.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-cyan-100 text-cyan-700'
                           }`}>
                             {student.role}
                           </span>
                         </td>
                         <td className="px-6 py-4 text-gray-500 text-sm">{new Date(student.createdAt).toLocaleDateString()}</td>
                         <td className="px-6 py-4">
-                          <button className="text-gray-400 hover:text-blue-600 mr-3"><Edit className="h-4 w-4" /></button>
+                          <button className="mr-3 text-gray-400 hover:text-cyan-600"><Edit className="h-4 w-4" /></button>
                           <button className="text-gray-400 hover:text-red-600"><Trash2 className="h-4 w-4" /></button>
                         </td>
                       </tr>

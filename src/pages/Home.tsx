@@ -13,43 +13,48 @@ import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
 const Hero = () => (
-  <section className="relative overflow-hidden pt-16 pb-24 lg:pt-32 lg:pb-40">
+  <section className="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-32 lg:pb-40">
     <div className="absolute inset-0 z-0">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-50/50 via-transparent to-transparent" />
+      <div className="absolute top-0 left-1/2 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-100/70 via-transparent to-transparent" />
     </div>
     
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mb-6">
+          <span className="mb-6 inline-flex items-center rounded-full bg-cyan-100 px-3 py-1 text-sm font-medium text-cyan-800">
             New Batch Starting Soon!
           </span>
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-8">
+          <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:mb-8 sm:text-5xl lg:text-7xl">
             Master Your Future with <br />
-            <span className="text-blue-600">Expert Guidance</span>
+            <span className="text-cyan-600">Expert Guidance</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-            Comprehensive coaching for competitive exams and academic excellence. 
+          <p className="mx-auto mb-8 max-w-2xl text-base text-gray-600 sm:mb-10 sm:text-xl">
+            Comprehensive coaching for competitive exams and academic excellence.
             Join 5000+ successful students who achieved their dreams with us.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               to="/courses"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all"
+              className="inline-flex w-full items-center justify-center rounded-xl border border-transparent bg-cyan-600 px-8 py-4 text-base font-medium text-white shadow-lg shadow-cyan-200 transition-all hover:bg-cyan-700 sm:w-auto"
             >
               Explore Courses
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link
               to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-all"
+              className="inline-flex w-full items-center justify-center rounded-xl border border-gray-200 bg-white px-8 py-4 text-base font-medium text-gray-700 transition-all hover:bg-gray-50 sm:w-auto"
             >
               Book Free Demo
             </Link>
+          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm text-slate-600">
+            <span className="rounded-full bg-white/90 px-3 py-1 shadow-sm">Mobile-friendly classes</span>
+            <span className="rounded-full bg-white/90 px-3 py-1 shadow-sm">Live doubt support</span>
+            <span className="rounded-full bg-white/90 px-3 py-1 shadow-sm">Quick WhatsApp help</span>
           </div>
         </motion.div>
       </div>
@@ -58,18 +63,18 @@ const Hero = () => (
 );
 
 const Stats = () => (
-  <section className="py-12 bg-white border-y border-gray-100">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+  <section className="border-y border-gray-100 bg-white py-10 sm:py-12">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
         {[
           { label: 'Students Enrolled', value: '5000+' },
           { label: 'Success Rate', value: '98%' },
           { label: 'Expert Faculty', value: '50+' },
           { label: 'Years Experience', value: '15+' },
         ].map((stat, i) => (
-          <div key={i} className="text-center">
-            <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-            <div className="text-sm text-gray-500 uppercase tracking-wider font-medium">{stat.label}</div>
+          <div key={i} className="rounded-2xl border border-cyan-50 bg-slate-50 px-4 py-5 text-center shadow-sm">
+            <div className="mb-1 text-2xl font-bold text-gray-900 sm:text-3xl">{stat.value}</div>
+            <div className="text-[11px] font-medium uppercase tracking-wider text-gray-500 sm:text-sm">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -81,7 +86,7 @@ const Features = () => (
   <section className="py-24 bg-gray-50">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose EduStream?</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose CoralClasses?</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
           We provide a holistic learning environment designed to help you succeed.
         </p>
@@ -93,19 +98,19 @@ const Features = () => (
             title: 'Expert Faculty',
             desc: 'Learn from industry veterans and top-tier educators with years of experience.',
             icon: Users,
-            color: 'bg-blue-500'
+            color: 'bg-cyan-500'
           },
           {
             title: 'Modern Curriculum',
             desc: 'Stay ahead with our updated study materials and interactive learning tools.',
             icon: BookOpen,
-            color: 'bg-indigo-500'
+            color: 'bg-teal-500'
           },
           {
             title: 'Proven Results',
             desc: 'Consistent track record of producing top rankers in competitive exams.',
             icon: Trophy,
-            color: 'bg-purple-500'
+            color: 'bg-sky-500'
           }
         ].map((feature, i) => (
           <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
@@ -158,7 +163,7 @@ const Testimonials = () => (
             <p className="text-gray-700 italic mb-6">"{t.text}"</p>
             <div>
               <div className="font-bold text-gray-900">{t.name}</div>
-              <div className="text-sm text-blue-600">{t.role}</div>
+              <div className="text-sm text-cyan-600">{t.role}</div>
             </div>
           </div>
         ))}

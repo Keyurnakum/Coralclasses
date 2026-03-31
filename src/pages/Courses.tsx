@@ -66,7 +66,7 @@ export default function Courses() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-cyan-600"></div>
       </div>
     );
   }
@@ -87,7 +87,7 @@ export default function Courses() {
             <input
               type="text"
               placeholder="Search courses..."
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              className="w-full rounded-xl border border-gray-200 bg-white py-3 pr-4 pl-10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -109,7 +109,7 @@ export default function Courses() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-blue-600">
+                <div className="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1 text-sm font-bold text-cyan-600 backdrop-blur">
                   {course.duration}
                 </div>
               </div>
@@ -131,7 +131,7 @@ export default function Courses() {
                 
                 <Link
                   to={`/login`}
-                  className="w-full inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-cyan-600 px-4 py-2 font-medium text-white transition-colors hover:bg-cyan-700"
                 >
                   Enroll Now
                   <ArrowRight className="ml-2 h-4 w-4" />

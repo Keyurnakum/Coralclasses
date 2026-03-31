@@ -46,7 +46,7 @@ export default function Materials({ userProfile }: { userProfile: UserProfile | 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-5xl mx-auto px-4">
-        <Link to="/dashboard" className="inline-flex items-center text-sm font-bold text-blue-600 mb-8 hover:underline">
+        <Link to="/dashboard" className="mb-8 inline-flex items-center text-sm font-bold text-cyan-600 hover:underline">
           <ChevronLeft className="h-4 w-4 mr-1" />
           Back to Dashboard
         </Link>
@@ -57,9 +57,9 @@ export default function Materials({ userProfile }: { userProfile: UserProfile | 
               <h1 className="text-3xl font-bold text-gray-900 mb-2">{course.title}</h1>
               <p className="text-gray-600">Access all your study materials and recorded sessions here.</p>
             </div>
-            <div className="bg-blue-50 px-6 py-3 rounded-2xl border border-blue-100">
-              <div className="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Instructor</div>
-              <div className="font-bold text-blue-900">{course.instructor}</div>
+            <div className="rounded-2xl border border-cyan-100 bg-cyan-50 px-6 py-3">
+              <div className="mb-1 text-xs font-bold uppercase tracking-wider text-cyan-600">Instructor</div>
+              <div className="font-bold text-cyan-900">{course.instructor}</div>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Materials({ userProfile }: { userProfile: UserProfile | 
           {/* PDF Materials */}
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-              <BookOpen className="h-5 w-5 mr-2 text-blue-600" />
+              <BookOpen className="mr-2 h-5 w-5 text-cyan-600" />
               Study Guides & PDFs
             </h2>
             <div className="space-y-4">
@@ -84,7 +84,7 @@ export default function Materials({ userProfile }: { userProfile: UserProfile | 
                     </div>
                     <span className="font-medium text-gray-900">{m.title}</span>
                   </div>
-                  <button className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
+                  <button className="p-2 text-gray-400 transition-colors hover:text-cyan-600">
                     <Download className="h-5 w-5" />
                   </button>
                 </motion.div>
@@ -111,7 +111,7 @@ export default function Materials({ userProfile }: { userProfile: UserProfile | 
                     </div>
                     <span className="font-medium text-gray-900">{m.title}</span>
                   </div>
-                  <button className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
+                  <button className="p-2 text-gray-400 transition-colors hover:text-cyan-600">
                     <ExternalLink className="h-5 w-5" />
                   </button>
                 </motion.div>

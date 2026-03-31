@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+:root {
+  --brand-primary: #14b8c4;
+  --brand-primary-dark: #0f8798;
+  --brand-soft: #ecfeff;
+  --brand-ink: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  background:
+    radial-gradient(circle at top, rgba(20, 184, 196, 0.14) 0%, transparent 42%),
+    linear-gradient(180deg, #f7feff 0%, #ffffff 38%, #f4fbfc 100%);
+  color: var(--brand-ink);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.mobile-content-safe {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 45;
+  border-top: 1px solid rgba(165, 243, 252, 0.9);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(14px);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 768px) {
+  .mobile-content-safe {
+    padding-bottom: 0;
+  }
+}
+

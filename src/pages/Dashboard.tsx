@@ -72,7 +72,7 @@ export default function Dashboard({ userProfile }: { userProfile: UserProfile | 
             {/* Enrolled Courses */}
             <section>
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <Book className="h-5 w-5 mr-2 text-blue-600" />
+                <Book className="mr-2 h-5 w-5 text-cyan-600" />
                 My Courses
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -83,7 +83,7 @@ export default function Dashboard({ userProfile }: { userProfile: UserProfile | 
                     <div className="flex flex-wrap gap-2">
                       <Link 
                         to={`/materials/${course.id}`}
-                        className="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-100"
+                        className="inline-flex items-center rounded-lg bg-cyan-50 px-3 py-1.5 text-xs font-medium text-cyan-700 hover:bg-cyan-100"
                       >
                         <FileText className="h-3 w-3 mr-1" />
                         Materials
@@ -128,7 +128,7 @@ export default function Dashboard({ userProfile }: { userProfile: UserProfile | 
                         <div className="text-xs text-gray-500">Uploaded 2 days ago</div>
                       </div>
                     </div>
-                    <button className="text-blue-600 hover:text-blue-700">
+                    <button className="text-cyan-600 hover:text-cyan-700">
                       <ExternalLink className="h-4 w-4" />
                     </button>
                   </div>
@@ -169,11 +169,11 @@ export default function Dashboard({ userProfile }: { userProfile: UserProfile | 
               <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm space-y-3">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Maths (Calculus)</span>
-                  <span className="font-bold text-blue-600">10:00 AM</span>
+                  <span className="font-bold text-cyan-600">10:00 AM</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Chemistry (Organic)</span>
-                  <span className="font-bold text-blue-600">02:00 PM</span>
+                  <span className="font-bold text-cyan-600">02:00 PM</span>
                 </div>
               </div>
             </section>
@@ -211,7 +211,7 @@ export default function Dashboard({ userProfile }: { userProfile: UserProfile | 
                 </label>
                 <button 
                   onClick={() => setShowPayment(false)}
-                  className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700"
+                  className="w-full rounded-xl bg-cyan-600 py-3 font-bold text-white hover:bg-cyan-700"
                 >
                   Submit for Verification
                 </button>
