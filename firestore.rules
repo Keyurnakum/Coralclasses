@@ -1,0 +1,78 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    // Collection: users
+    // Fields: uid, email, displayName, role, enrolledCourses, createdAt
+    //
+    // Collection: courses
+    // Fields: title, description, fee, duration, instructor, thumbnail
+    //
+    // Collection: inquiries
+    // Fields: name, phone, course, message, createdAt
+    //
+    // Collection: tests
+    // Fields: title, questions, courseId
+    //
+    // Collection: results
+    // Fields: userId, testId, score, total, completedAt
+    //
+    // Collection: announcements
+    // Fields: title, content, createdAt
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         (request.auth.token.email == "freeu1600@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    // User Rules
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && isOwner(userId);
+      allow update: if isAdmin() || (isOwner(userId) && request.resource.data.role == resource.data.role);
+    }
+
+    // Course Rules
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Inquiry Rules
+    match /inquiries/{inquiryId} {
+      allow read: if isAdmin();
+      allow create: if true;
+    }
+
+    // Test Rules
+    match /tests/{testId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // Result Rules
+    match /results/{resultId} {
+      allow read: if isAuthenticated() && (isOwner(resource.data.userId) || isAdmin());
+      allow create: if isAuthenticated() && isOwner(request.resource.data.userId);
+    }
+
+    // Announcement Rules
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

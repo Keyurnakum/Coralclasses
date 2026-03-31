@@ -1,0 +1,104 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "admin"] },
+        "enrolledCourses": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Course": {
+      "title": "Course",
+      "description": "Course details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "fee": { "type": "number" },
+        "duration": { "type": "string" },
+        "instructor": { "type": "string" },
+        "thumbnail": { "type": "string" }
+      },
+      "required": ["title", "fee", "duration"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Student inquiry form submission",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "course": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone", "course"]
+    },
+    "Test": {
+      "title": "Test",
+      "description": "Online test/quiz",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "questions": { "type": "array" },
+        "courseId": { "type": "string" }
+      }
+    },
+    "Result": {
+      "title": "Result",
+      "description": "Test result for a student",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "testId": { "type": "string" },
+        "score": { "type": "number" },
+        "total": { "type": "number" },
+        "completedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Announcement": {
+      "title": "Announcement",
+      "description": "Institute announcements",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/courses/{courseId}": {
+      "schema": "Course",
+      "description": "Available courses"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Student inquiries"
+    },
+    "/tests/{testId}": {
+      "schema": "Test",
+      "description": "Online tests"
+    },
+    "/results/{resultId}": {
+      "schema": "Result",
+      "description": "Student test results"
+    },
+    "/announcements/{announcementId}": {
+      "schema": "Announcement",
+      "description": "Announcements"
+    }
+  }
+}
