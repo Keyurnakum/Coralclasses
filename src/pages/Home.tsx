@@ -62,6 +62,18 @@ const Hero = () => (
   </section>
 );
 
+const NavratriBanner = () => (
+  <section className="bg-white py-6">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <img
+        src="/images/CorelNavratriBanner2025FinalJPEG.jpg.jpeg"
+        alt="Corel Navratri Banner 2025"
+        className="w-full rounded-2xl shadow-xl object-cover"
+      />
+    </div>
+  </section>
+);
+
 const Stats = () => (
   <section className="border-y border-gray-100 bg-white py-10 sm:py-12">
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -212,6 +224,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
+      <NavratriBanner />
       <Stats />
       <Features />
       <Testimonials />

@@ -5,36 +5,28 @@ import { Linkedin, Mail, Twitter } from 'lucide-react';
 export default function Faculty() {
   const faculty = [
     {
-      name: 'Dr. S.K. Sharma',
-      role: 'Head of Physics',
-      exp: '20+ Years',
-      edu: 'Ph.D. from IIT Delhi',
-      image: 'https://i.pravatar.cc/300?img=11',
+      name: 'Manoj Chopda',
+      role: 'Physics Expert',
+      exp: '8+ Years',
+      edu: 'B.Tech - 8+ Years Experience',
+      image: '/images/ManojChopda.jpeg',
       bio: 'Expert in Mechanics and Quantum Physics. Has mentored over 10,000 students for JEE Advanced.'
     },
     {
-      name: 'Dr. Anjali Verma',
-      role: 'Biology Specialist',
-      exp: '15+ Years',
-      edu: 'MD, AIIMS New Delhi',
-      image: 'https://i.pravatar.cc/300?img=32',
-      bio: 'Specializes in Genetics and Human Physiology. Known for her simplified diagrams and memory tricks.'
+      name: 'Jignesh Nakum',
+      role: 'Biology + Chemistry Expert',
+      exp: '6+ Years',
+      edu: 'B.Sc. , B.Ed. - Exp: 6+ Years',
+      image: '/images/JigneshNakum.jpeg',
+      bio: 'Biology expert. Known for his simplified diagrams and memory tricks.'
     },
     {
-      name: 'Prof. Rajesh Gupta',
+      name: 'Upendra Chopda',
       role: 'Mathematics Expert',
-      exp: '18+ Years',
-      edu: 'M.Sc. Mathematics, DU',
-      image: 'https://i.pravatar.cc/300?img=12',
+      exp: '8+ Years',
+      edu: 'B.Sc. , B.Ed. - Exp: 8+ Years',
+      image: '/images/UpendraChopda.jpeg',
       bio: 'Calculus and Algebra wizard. Author of several best-selling competitive math workbooks.'
-    },
-    {
-      name: 'Ms. Neha Singh',
-      role: 'Chemistry Faculty',
-      exp: '12+ Years',
-      edu: 'M.Tech Chemical Eng., IITB',
-      image: 'https://i.pravatar.cc/300?img=44',
-      bio: 'Organic Chemistry specialist. Focuses on conceptual clarity and reaction mechanisms.'
     }
   ];
 
@@ -48,7 +40,7 @@ export default function Faculty() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {faculty.map((member, i) => (
             <motion.div
               key={i}
@@ -80,7 +72,7 @@ export default function Faculty() {
               <div className="p-6 text-center">
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                 <div className="mb-3 text-sm font-medium text-cyan-600">{member.role}</div>
-                <div className="text-xs text-gray-500 mb-4 uppercase tracking-widest font-bold">{member.exp} Experience</div>
+                <div className="text-xs text-gray-500 mb-4 uppercase tracking-widest font-bold">{member.edu}</div>
                 <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">{member.bio}</p>
               </div>
             </motion.div>
