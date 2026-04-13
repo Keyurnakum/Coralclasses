@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Linkedin, Mail, Twitter } from 'lucide-react';
 
 export default function Faculty() {
   const faculty = [
@@ -10,7 +9,7 @@ export default function Faculty() {
       exp: '8+ Years',
       edu: 'B.Tech - 8+ Years Experience',
       image: '/images/ManojChopda.jpeg',
-      bio: 'Expert in Mechanics and Quantum Physics. Has mentored over 10,000 students for JEE Advanced.'
+      bio: 'Highly skilled Physics educator specializing in concept clarity, analytical thinking, and problem-solving, with a strong focus on exam-oriented preparation.'
     },
     {
       name: 'Jignesh Nakum',
@@ -26,7 +25,7 @@ export default function Faculty() {
       exp: '8+ Years',
       edu: 'B.Sc. , B.Ed. - Exp: 8+ Years',
       image: '/images/UpendraChopda.jpeg',
-      bio: 'Calculus and Algebra wizard. Author of several best-selling competitive math workbooks.'
+      bio: 'Highly skilled Mathematics educator specializing in concept clarity and logical problem-solving, and exam-oriented preparation.'
     }
   ];
 
@@ -56,17 +55,6 @@ export default function Faculty() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 space-x-4">
-                  <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur transition-colors hover:bg-white hover:text-cyan-600">
-                    <Linkedin className="h-5 w-5" />
-                  </button>
-                  <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur transition-colors hover:bg-white hover:text-cyan-600">
-                    <Twitter className="h-5 w-5" />
-                  </button>
-                  <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur transition-colors hover:bg-white hover:text-cyan-600">
-                    <Mail className="h-5 w-5" />
-                  </button>
-                </div>
               </div>
               
               <div className="p-6 text-center">

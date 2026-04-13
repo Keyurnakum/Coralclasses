@@ -58,7 +58,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">Visit Us</h3>
-                <p className="text-gray-600">123 Education Hub, Knowledge Park,<br />New Delhi, India - 110001</p>
+                <p className="text-gray-600">Opp K K Mall, railway Station Road,<br />Main Road, near Atithi Restaurant,<br />Gujarat 361305</p>
               </div>
             </div>
 
@@ -68,8 +68,8 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">Call Us</h3>
-                <p className="text-gray-600">+91 98765 43210</p>
-                <p className="text-gray-600">+91 11 2345 6789</p>
+                <p className="text-gray-600"><a href="tel:+918154876973" className="hover:text-blue-600 transition-colors">+91 8154876973</a></p>
+                <p className="text-gray-600"><a href="tel:+919978086840" className="hover:text-blue-600 transition-colors">+91 9978086840</a></p>
               </div>
             </div>
 
@@ -79,23 +79,12 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">Email Us</h3>
-                <p className="text-gray-600">info@coralclasses.com</p>
-                <p className="text-gray-600">support@coralclasses.com</p>
+                <p className="text-gray-600"><a href="mailto:coralclasses0172020@gmail.com" className="cursor-pointer text-blue-600 hover:text-blue-800 font-medium transition-colors underline">coralclasses0172020@gmail.com</a></p>
+                <p className="text-gray-600"><a href="mailto:support@coralclasses.com" className="cursor-pointer text-blue-600 hover:text-blue-800 font-medium transition-colors underline">support@coralclasses.com</a></p>
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="rounded-2xl overflow-hidden h-64 border border-gray-100 shadow-sm">
-              <iframe
-                title="Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.562064932446!2d77.2090212!3d28.6139391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204d!2sIndia%20Gate!5e0!3m2!1sen!2sin!4v1648712345678!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
-            </div>
+
           </div>
 
           {/* Inquiry Form */}
@@ -120,7 +109,7 @@ export default function Contact() {
                     type="tel"
                     required
                     className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 8154876973"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />

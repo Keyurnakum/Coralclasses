@@ -20,7 +20,7 @@ export default function Chatbot() {
 
     // Simple bot logic
     setTimeout(() => {
-      let botResponse = "I'm a simple assistant. For detailed inquiries, please use our contact form or call us at +91 98765 43210.";
+      let botResponse = "I'm a simple assistant. For detailed inquiries, please use our contact form or call us at +91 8154876973.";
       if (userMsg.toLowerCase().includes('course')) {
         botResponse = "We offer IIT-JEE, NEET, and Board exam preparation. Check our Courses page for details!";
       } else if (userMsg.toLowerCase().includes('fee')) {

@@ -47,6 +47,7 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
     { name: 'About', path: '/about' },
     { name: 'Courses', path: '/courses' },
     { name: 'Faculty', path: '/faculty' },
+    { name: 'Free Material', path: '/materials' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -56,27 +57,27 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-cyan-100 bg-white/90 shadow-sm backdrop-blur-md">
+    <nav className="sticky top-0 z-50 border-b border-cyan-100 bg-white/90 shadow-md backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 justify-between">
+        <div className="flex h-20 justify-between items-center">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <img
                 src="/logo.jpeg"
                 alt="CoralClasses logo"
-                className="h-11 w-auto max-w-[160px] rounded-2xl bg-white px-2 py-1 object-contain shadow-sm"
+                className="h-14 w-auto max-w-[180px] rounded-2xl bg-white px-2 py-1 object-contain shadow-sm"
               />
             </Link>
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-cyan-600",
+                  "text-base font-medium transition-colors hover:text-cyan-600",
                   location.pathname === link.path ? "text-cyan-700" : "text-gray-600"
                 )}
               >
@@ -84,25 +85,25 @@ const Navbar = ({ userProfile }: { userProfile: UserProfile | null }) => {
               </Link>
             ))}
             {userProfile ? (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-6">
                 <Link
                   to={userProfile.role === 'admin' ? '/admin' : '/dashboard'}
-                  className="flex items-center space-x-1 text-sm font-medium text-gray-600 hover:text-cyan-600"
+                  className="flex items-center space-x-1 text-base font-medium text-gray-600 hover:text-cyan-600"
                 >
-                  <LayoutDashboard className="h-4 w-4" />
+                  <LayoutDashboard className="h-5 w-5" />
                   <span>Dashboard</span>
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="text-sm font-medium text-gray-600 hover:text-red-600"
+                  className="text-base font-medium text-gray-600 hover:text-red-600"
                 >
-                  <LogOut className="h-4 w-4" />
+                  <LogOut className="h-5 w-5" />
                 </button>
               </div>
             ) : (
               <Link
                 to="/login"
-                className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm shadow-cyan-100 transition-all hover:bg-cyan-700"
+                className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-5 py-2.5 text-base font-medium text-white shadow-md shadow-cyan-100 transition-all hover:bg-cyan-700"
               >
                 Login
               </Link>
@@ -199,6 +200,7 @@ const Footer = () => (
           <ul className="space-y-2">
             <li><Link to="/about" className="text-gray-400 transition-colors hover:text-cyan-300">About Us</Link></li>
             <li><Link to="/courses" className="text-gray-400 transition-colors hover:text-cyan-300">Courses</Link></li>
+            <li><Link to="/materials" className="text-gray-400 transition-colors hover:text-cyan-300">Free Material</Link></li>
             <li><Link to="/faculty" className="text-gray-400 transition-colors hover:text-cyan-300">Faculty</Link></li>
             <li><Link to="/contact" className="text-gray-400 transition-colors hover:text-cyan-300">Contact</Link></li>
           </ul>
@@ -208,11 +210,11 @@ const Footer = () => (
           <ul className="space-y-2 text-gray-400">
             <li className="flex items-center space-x-2">
               <Phone className="h-4 w-4 text-cyan-300" />
-              <span>+91 98765 43210</span>
+              <span>+91 8154876973</span>
             </li>
             <li className="flex items-center space-x-2">
               <MessageSquare className="h-4 w-4 text-cyan-300" />
-              <span>info@coralclasses.com</span>
+              <a href="mailto:coralclasses0172020@gmail.com" className="cursor-pointer hover:text-cyan-100 transition-colors underline">coralclasses0172020@gmail.com</a>
             </li>
           </ul>
         </div>
@@ -330,6 +332,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/materials" element={<Materials userProfile={userProfile} />} />
             <Route path="/faculty" element={<Faculty />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
